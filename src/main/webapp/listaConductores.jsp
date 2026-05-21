@@ -8,6 +8,7 @@
     SELECT dui, nombre_completo, edad, sexo, licencia_vigente FROM conductor;
 </sql:query>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

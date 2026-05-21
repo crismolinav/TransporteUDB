@@ -8,6 +8,7 @@
     SELECT id_tipo, nombre_tipo FROM tipo_vehiculo;
 </sql:query>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -10,6 +10,7 @@
     INNER JOIN tipo_vehiculo t ON v.id_tipo = t.id_tipo;
 </sql:query>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
