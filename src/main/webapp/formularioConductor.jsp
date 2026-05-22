@@ -36,7 +36,7 @@
 
                     <div class="mb-4">
                         <label class="form-label fw-bold text-uppercase tracking-wider" style="font-size:0.75rem;">Nombre Completo</label>
-                        <input type="text" class="form-control tdb-line-input" name="nombre" required placeholder="Ej. Juan Pérez">
+                        <input type="text" class="form-control tdb-line-input" name="nombre" required placeholder="Ej. Christopher Villacorta">
                     </div>
 
                     <div class="mb-4">

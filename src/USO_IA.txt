@@ -1,0 +1,11 @@
+EQUIPO: Christopher Enrique Villacorta Molina, Susana Nicole Valle Méndez
+
+Yo Christopher Enrique Villacorta Molina usé IA para:
+- Prompt: "Generar estructura base de dependencias para pom.xml compatible con Tomcat 10 y Jakarta EE." | Archivo/Línea: pom.xml / Líneas 12-28
+- Prompt: "Sintaxis de JSTL para capturar excepciones de base de datos usando la etiqueta <c:catch>." | Archivo/Línea: controller.jsp / Líneas 18-35
+- Prompt: "Ejemplo de implementación de un CRUD centralizado usando <c:choose> para enrutamiento de acciones." | Archivo/Línea: controller.jsp / Líneas 10-110
+
+Yo Susana Nicole Valle Méndez usé IA para:
+- Prompt: "Configuración XML estándar para definir un Resource de Pool de Conexiones JNDI hacia MySQL." | Archivo/Línea: META-INF/context.xml / Líneas 1-12
+- Prompt: "Generar paleta de colores con variables CSS nativas (:root) para un diseño minimalista editorial." | Archivo/Línea: css/estilos.css / Líneas 1-20
+- Prompt: "Sintaxis para preseleccionar opciones en un <select> HTML usando etiquetas <c:if> de JSTL." | Archivo/Línea: formularioEditarVehiculo.jsp / Líneas 75-80
