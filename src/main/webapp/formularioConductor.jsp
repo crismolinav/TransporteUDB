@@ -1,79 +1,73 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registrar Conductor - Transportes Don Bosco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta Conductor - Transportes Don Bosco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/estilos.css?v=1" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg shadow-none py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.jsp">Transportes Don Bosco</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.jsp">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="listaVehiculos.jsp">Gestión de Vehículos</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="listaConductores.jsp">Gestión de Conductores</a></li>
-                </ul>
-            </div>
+            <a class="navbar-brand fw-bold fs-4 display-serif" href="index.jsp">Transportes Don Bosco</a>
         </div>
     </nav>
 
     <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0">Registrar Nuevo Conductor</h4>
+        <div class="row justify-content-center pt-4">
+            <div class="col-md-6 col-lg-5">
+                <h2 class="display-serif mb-2" style="font-size: 2.5rem;">Ficha de Registro</h2>
+                <p class="sans-clean text-muted mb-5">Ingrese las credenciales oficiales del nuevo conductor.</p>
+
+                <form action="controller.jsp" method="POST" class="sans-clean">
+                    <input type="hidden" name="accion" value="insertarConductor">
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-uppercase tracking-wider" style="font-size:0.75rem;">Documento Único de Identidad (DUI)</label>
+                        <input type="text" class="form-control tdb-line-input" name="dui" required maxlength="10"
+                               pattern="[0-9]{8}-[0-9]" title="Formato requerido: 12345678-9" placeholder="00000000-0">
                     </div>
-                    <div class="card-body p-4">
-                        <form action="controller.jsp" method="POST">
-                            <input type="hidden" name="accion" value="insertarConductor">
-                            <div class="mb-3">
-                            <label class="form-label fw-bold">DUI</label>
-                            <input type="text" class="form-control" name="dui" required maxlength="10" pattern="[0-9]{8}-[0-9]"
-                            title="El DUI debe llevar 8 números, un guion y 1 número (Ej: 12345678-9)"
-                            placeholder="Ej: 12345678-9">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Nombre Completo</label>
-                                <input type="text" class="form-control" name="nombre" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Edad</label>
-                                <input type="number" class="form-control" name="edad" required min="18">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">Sexo</label>
-                                <select class="form-select" name="sexo" required>
-                                    <option value="M">Masculino</option>
-                                    <option value="F">Femenino</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">Estado de Licencia</label>
-                                <select class="form-select" name="licencia" required>
-                                    <option value="1">Vigente</option>
-                                    <option value="0">Vencida</option>
-                                </select>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-success btn-lg">Guardar Conductor</button>
-                                <a href="listaConductores.jsp" class="btn btn-outline-secondary">Cancelar</a>
-                            </div>
-                        </form>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-uppercase tracking-wider" style="font-size:0.75rem;">Nombre Completo</label>
+                        <input type="text" class="form-control tdb-line-input" name="nombre" required placeholder="Ej. Juan Pérez">
                     </div>
-                </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-uppercase tracking-wider" style="font-size:0.75rem;">Edad Cronológica</label>
+                        <input type="number" class="form-control tdb-line-input" name="edad" required min="18" placeholder="Años mínimos: 18">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-uppercase tracking-wider" style="font-size:0.75rem;">Género asignado</label>
+                        <select class="form-select tdb-line-input" name="sexo" required>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label fw-bold text-uppercase tracking-wider" style="font-size:0.75rem;">Estado Legal de Licencia</label>
+                        <select class="form-select tdb-line-input" name="licencia" required>
+                            <option value="1">Vigente / Activa</option>
+                            <option value="0">Vencida / Inactiva</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex align-items-center justify-content-between pt-2">
+                        <a href="listaConductores.jsp" class="text-dark fw-bold text-decoration-none border-bottom border-dark pb-1">Volver al listado</a>
+                        <button type="submit" class="tdb-btn-pill">Guardar Registro</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
