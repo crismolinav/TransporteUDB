@@ -8,7 +8,6 @@
     SELECT dui, nombre_completo, edad, sexo, licencia_vigente FROM conductor;
 </sql:query>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -37,50 +36,53 @@
     <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="text-primary fw-bold">Directorio de Conductores</h2>
-            <a href="formularioConductor.jsp" class="btn btn-success">Registrar Nuevo Conductor</a>
+            <a href="formularioConductor.jsp" class="btn btn-success fw-bold">Registrar Nuevo Conductor</a>
         </div>
 
         <c:if test="${not empty param.msg}">
-            <div class="alert alert-info shadow-sm">${param.msg}</div>
+            <div class="alert alert-info shadow-sm fw-bold">${param.msg}</div>
         </c:if>
 
-        <div class="card shadow-sm">
+        <div class="card shadow-sm border-0">
             <div class="card-body p-0">
-                <table class="table table-striped table-hover m-0">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>DUI</th>
-                            <th>Nombre Completo</th>
-                            <th>Edad</th>
-                            <th>Sexo</th>
-                            <th>Licencia</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="row" items="${resConductores.rows}">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover m-0 align-middle">
+                        <thead class="table-dark">
                             <tr>
-                                <td><c:out value="${row.dui}"/></td>
-                                <td><c:out value="${row.nombre_completo}"/></td>
-                                <td><c:out value="${row.edad}"/> años</td>
-                                <td><c:out value="${row.sexo}"/></td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${row.licencia_vigente == 1}">
-                                            <span class="badge bg-success">Vigente</span>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <span class="badge bg-danger">Vencida</span>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </td>
-                                <td class="text-center">
-                                    <a href="controller.jsp?accion=eliminarConductor&dui=${row.dui}" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar a este conductor?');">Eliminar</a>
-                                </td>
+                                <th>DUI</th>
+                                <th>Nombre Completo</th>
+                                <th>Edad</th>
+                                <th>Sexo</th>
+                                <th>Licencia</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="row" items="${resConductores.rows}">
+                                <tr>
+                                    <td class="fw-bold"><c:out value="${row.dui}"/></td>
+                                    <td><c:out value="${row.nombre_completo}"/></td>
+                                    <td><c:out value="${row.edad}"/> años</td>
+                                    <td><c:out value="${row.sexo}"/></td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${row.licencia_vigente}">
+                                                <span class="badge bg-success">Vigente</span>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <span class="badge bg-danger">Vencida</span>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="formularioEditarConductor.jsp?dui=${row.dui}" class="btn btn-warning btn-sm fw-bold me-1">Editar</a>
+                                        <a href="controller.jsp?accion=eliminarConductor&dui=${row.dui}" class="btn btn-danger btn-sm fw-bold" onclick="return confirm('¿Seguro que deseas eliminar a este conductor?');">Eliminar</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -10,7 +10,6 @@
     INNER JOIN tipo_vehiculo t ON v.id_tipo = t.id_tipo;
 </sql:query>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,45 +38,48 @@
     <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="text-primary fw-bold">Flota de Vehículos</h2>
-            <a href="formularioVehiculo.jsp" class="btn btn-success">Registrar Nuevo Vehículo</a>
+            <a href="formularioVehiculo.jsp" class="btn btn-success fw-bold">Registrar Nuevo Vehículo</a>
         </div>
 
         <c:if test="${not empty param.msg}">
-            <div class="alert alert-info shadow-sm">${param.msg}</div>
+            <div class="alert alert-info shadow-sm fw-bold">${param.msg}</div>
         </c:if>
 
-        <div class="card shadow-sm">
+        <div class="card shadow-sm border-0">
             <div class="card-body p-0">
-                <table class="table table-striped table-hover m-0">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Tipo</th>
-                            <th>Marca</th>
-                            <th>Modelo</th>
-                            <th>Año</th>
-                            <th>Capacidad/Cilindraje</th>
-                            <th>Estado</th>
-                            <th class="text-center">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="row" items="${resVehiculos.rows}">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover m-0 align-middle">
+                        <thead class="table-dark">
                             <tr>
-                                <td><c:out value="${row.id_vehiculo}"/></td>
-                                <td><c:out value="${row.nombre_tipo}"/></td>
-                                <td><c:out value="${row.marca}"/></td>
-                                <td><c:out value="${row.modelo}"/></td>
-                                <td><c:out value="${row.anio}"/></td>
-                                <td><c:out value="${row.dato_especifico}"/></td>
-                                <td><span class="badge bg-secondary"><c:out value="${row.estado_mantenimiento}"/></span></td>
-                                <td class="text-center">
-                                    <a href="controller.jsp?accion=eliminarVehiculo&id=${row.id_vehiculo}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este vehículo?');">Eliminar</a>
-                                </td>
+                                <th>ID</th>
+                                <th>Tipo</th>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Año</th>
+                                <th>Capacidad/Cilindraje</th>
+                                <th>Estado</th>
+                                <th class="text-center">Acciones</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="row" items="${resVehiculos.rows}">
+                                <tr>
+                                    <td class="fw-bold"><c:out value="${row.id_vehiculo}"/></td>
+                                    <td><c:out value="${row.nombre_tipo}"/></td>
+                                    <td><c:out value="${row.marca}"/></td>
+                                    <td><c:out value="${row.modelo}"/></td>
+                                    <td><c:out value="${row.anio}"/></td>
+                                    <td><c:out value="${row.dato_especifico}"/></td>
+                                    <td><span class="badge bg-secondary"><c:out value="${row.estado_mantenimiento}"/></span></td>
+                                    <td class="text-center">
+                                        <a href="formularioEditarVehiculo.jsp?id=${row.id_vehiculo}" class="btn btn-warning btn-sm fw-bold me-1">Editar</a>
+                                        <a href="controller.jsp?accion=eliminarVehiculo&id=${row.id_vehiculo}" class="btn btn-danger btn-sm fw-bold" onclick="return confirm('¿Eliminar este vehículo?');">Eliminar</a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
